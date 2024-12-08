@@ -1,0 +1,31 @@
+{
+  "name": "select2-vue",
+  "version": "1.0.0",
+  "description": "A Vue 3 component that integrates Select2",
+  "main": "dist/select2-vue.umd.js",
+  "module": "dist/select2-vue.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "select2",
+    "component",
+    "jquery"
+  ],
+  "author": "amdad121",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.3"
+  },
+  "peerDependencies": {
+    "jquery": "^3.7.1",
+    "select2": "^4.0.13",
+    "vue": "^3.5.13"
+  }
+}
