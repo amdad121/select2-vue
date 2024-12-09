@@ -6,7 +6,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: './src/Select2.vue',
-            name: 'Select2Vue',
+            name: 'Select2',
             fileName: (format) => `select2-vue.${format}.js`,
         },
         rollupOptions: {
