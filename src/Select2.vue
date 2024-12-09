@@ -32,6 +32,14 @@ const props = defineProps({
         type: Object,
         default: null,
     },
+    valueKey: {
+        type: String,
+        default: 'id',
+    },
+    textKey: {
+        type: String,
+        default: 'text',
+    },
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -99,8 +107,8 @@ onBeforeUnmount(() => {
 <template>
     <div>
         <select ref="selectElement" class="select2" :multiple="multiple" :disabled="disabled">
-            <option v-for="option in options" :key="option.value" :value="option.value">
-                {{ option.text }}
+            <option v-for="option in options" :key="option[valueKey]" :value="option[valueKey]">
+                {{ option[textKey] }}
             </option>
         </select>
     </div>
