@@ -1,8 +1,9 @@
 <script setup>
 import { ref, onMounted, watch, onBeforeUnmount } from 'vue';
 import $ from 'jquery';
-import 'select2/dist/css/select2.css';
 import select2 from 'select2';
+import { getGlobalSelect2Options } from './globalSelect2Config';
+import 'select2/dist/css/select2.css';
 
 select2();
 
@@ -23,6 +24,14 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    config: {
+        type: Object,
+        default: () => ({}),
+    },
+    ajaxOptions: {
+        type: Object,
+        default: null,
+    },
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -32,13 +41,28 @@ const selectElement = ref(null);
 let isUpdating = false;
 
 const initializeSelect2 = () => {
-    $(selectElement.value)
-        .select2({
-            multiple: props.multiple,
-            disabled: props.disabled,
-        })
-        .val(props.modelValue)
-        .trigger('change');
+    // Get global Select2 options
+    const globalOptions = getGlobalSelect2Options();
+
+    const defaultOptions = {
+        multiple: props.multiple,
+        disabled: props.disabled,
+    };
+
+    let mergedOptions = {
+        ...defaultOptions,
+        ...globalOptions,
+        ...props.config,
+    };
+
+    if (props.ajaxOptions) {
+        mergedOptions = {
+            ...mergedOptions,
+            ajax: props.ajaxOptions,
+        };
+    }
+
+    $(selectElement.value).select2(mergedOptions).val(props.modelValue).trigger('change');
 };
 
 watch(
