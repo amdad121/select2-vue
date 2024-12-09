@@ -42,7 +42,7 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'change', 'select']);
 
 const selectElement = ref(null);
 
@@ -88,17 +88,25 @@ const onSelect2Change = () => {
     if (!isUpdating) {
         const selectedValues = $(selectElement.value).val();
         emit('update:modelValue', selectedValues);
+        emit('change', selectedValues);
     }
+};
+
+const onSelect2Select = (e) => {
+    const selectedOption = e.params.data;
+    emit('select', selectedOption);
 };
 
 onMounted(() => {
     initializeSelect2();
     $(selectElement.value).on('change', onSelect2Change);
+    $(selectElement.value).on('select2:select', onSelect2Select);
 });
 
 onBeforeUnmount(() => {
     if (selectElement.value) {
         $(selectElement.value).off('change', onSelect2Change);
+        $(selectElement.value).off('select2:select', onSelect2Select);
         $(selectElement.value).select2('destroy');
     }
 });
