@@ -1,6 +1,6 @@
 {
   "name": "select2-vue",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Vue 3 component that integrates Select2",
   "main": "dist/select2-vue.umd.js",
   "module": "dist/select2-vue.es.js",
