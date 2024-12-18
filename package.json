@@ -1,6 +1,6 @@
 {
   "name": "select2-vue",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Vue 3 component that integrates Select2",
   "main": "dist/select2-vue.umd.js",
   "module": "dist/select2-vue.es.js",
@@ -18,7 +18,7 @@
     "jquery"
   ],
   "author": "amdad121",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.3"

@@ -1,4 +1,4 @@
-# Vue Select2 Component Plugin
+# Select2 Component for Vue
 
 [![npm version](https://badge.fury.io/js/select2-vue.svg)](https://badge.fury.io/js/select2-vue)
 
@@ -24,12 +24,6 @@ Or via yarn:
 
 ```bash
 yarn add select2-vue
-```
-
-You also need to install the original **Select2** library and **jQuery** as they are required dependencies:
-
-```bash
-npm install select2 jquery --save
 ```
 
 ## Basic Usage
@@ -71,11 +65,11 @@ The `select2-vue` component accepts the following props for customization:
 | Prop          | Type      | Default | Description                                                                                                                                                            |
 | ------------- | --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `options`     | `Array`   | `[]`    | Array of select options. Each option should be an object with `id` and `text` properties.                                                                              |
-| `modelValue`       | `Any`     | `null`  | The currently selected value (can be bound with `v-model`).                                                                                                            |
+| `modelValue`  | `Any`     | `null`  | The currently selected value (can be bound with `v-model`).                                                                                                            |
 | `placeholder` | `String`  | `""`    | Placeholder text displayed in the select box.                                                                                                                          |
 | `multiple`    | `Boolean` | `false` | Enables multiple selection.                                                                                                                                            |
 | `disabled`    | `Boolean` | `false` | Disables the select box.                                                                                                                                               |
-| `config`    | `Object`  | `{}`    | Custom settings to pass directly to the underlying Select2 instance. See [Select2 documentation](https://select2.org/configuration/options-api) for available options. |
+| `config`      | `Object`  | `{}`    | Custom settings to pass directly to the underlying Select2 instance. See [Select2 documentation](https://select2.org/configuration/options-api) for available options. |
 
 ## Events
 
