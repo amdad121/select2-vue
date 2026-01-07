@@ -1,0 +1,27 @@
+# Source files
+src/
+*.spec.js
+*.spec.ts
+*.test.js
+*.test.ts
+
+# Development files
+.git/
+.gitignore
+vite.config.js
+*.log
+
+# CI/CD
+.github/
+
+# Documentation
+README.md
+LICENSE
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build files (except dist)
+!dist/
+

@@ -13,8 +13,8 @@ const props = defineProps({
         required: true,
     },
     modelValue: {
-        type: [String, Array],
-        default: () => [],
+        type: [String, Number, Array],
+        default: null,
     },
     multiple: {
         type: Boolean,
@@ -42,7 +42,17 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(['update:modelValue', 'change', 'select']);
+const emit = defineEmits([
+    'update:modelValue',
+    'change',
+    'select',
+    'select2:select',
+    'select2:unselect',
+    'select2:opening',
+    'select2:closing',
+    'select2:open',
+    'select2:closed',
+]);
 
 const selectElement = ref(null);
 
@@ -95,18 +105,50 @@ const onSelect2Change = () => {
 const onSelect2Select = (e) => {
     const selectedOption = e.params.data;
     emit('select', selectedOption);
+    emit('select2:select', e);
+};
+
+const onSelect2Unselect = (e) => {
+    const unselectedOption = e.params.data;
+    emit('select2:unselect', e);
+};
+
+const onSelect2Opening = () => {
+    emit('select2:opening');
+};
+
+const onSelect2Closing = () => {
+    emit('select2:closing');
+};
+
+const onSelect2Open = () => {
+    emit('select2:open');
+};
+
+const onSelect2Closed = () => {
+    emit('select2:closed');
 };
 
 onMounted(() => {
     initializeSelect2();
     $(selectElement.value).on('change', onSelect2Change);
     $(selectElement.value).on('select2:select', onSelect2Select);
+    $(selectElement.value).on('select2:unselect', onSelect2Unselect);
+    $(selectElement.value).on('select2:opening', onSelect2Opening);
+    $(selectElement.value).on('select2:closing', onSelect2Closing);
+    $(selectElement.value).on('select2:open', onSelect2Open);
+    $(selectElement.value).on('select2:closed', onSelect2Closed);
 });
 
 onBeforeUnmount(() => {
     if (selectElement.value) {
         $(selectElement.value).off('change', onSelect2Change);
         $(selectElement.value).off('select2:select', onSelect2Select);
+        $(selectElement.value).off('select2:unselect', onSelect2Unselect);
+        $(selectElement.value).off('select2:opening', onSelect2Opening);
+        $(selectElement.value).off('select2:closing', onSelect2Closing);
+        $(selectElement.value).off('select2:open', onSelect2Open);
+        $(selectElement.value).off('select2:closed', onSelect2Closed);
         $(selectElement.value).select2('destroy');
     }
 });

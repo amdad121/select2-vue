@@ -1,21 +1,35 @@
 {
   "name": "select2-vue",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "A Vue 3 component that integrates Select2",
+  "type": "module",
   "main": "dist/select2-vue.umd.js",
   "module": "dist/select2-vue.es.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/select2-vue.es.js",
+      "require": "./dist/select2-vue.umd.js",
+      "types": "./index.d.ts"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "vue",
     "vue3",
     "select2",
     "component",
-    "jquery"
+    "jquery",
+    "select",
+    "dropdown",
+    "autocomplete"
   ],
   "author": "amdad121",
   "license": "MIT",
@@ -24,7 +38,7 @@
     "vite": "^6.0.3"
   },
   "peerDependencies": {
-    "vue": "^3.5.13"
+    "vue": "^3.0.0"
   },
   "dependencies": {
     "jquery": "^3.7.1",
